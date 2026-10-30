@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RAZ | TOP SECRET</title>
+<style>
+:root{--bg:#04070a;--p:#09100f;--g:#39ff88;--gd:#1f9a52;--a:#ffb000;--r:#ff3b3b;--t:#b4f5cf;--m:#5d8a70;--line:#14382a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--t);font-family:ui-monospace,"Courier New",Consolas,monospace;line-height:1.7;background:radial-gradient(ellipse at 50% -10%,#0c2118,var(--bg) 65%) fixed;padding-bottom:30px}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px)}
+.cls{background:var(--r);color:#000;text-align:center;font-weight:700;letter-spacing:5px;font-size:11px;padding:2px 0}
+.cls.b{position:fixed;bottom:0;left:0;right:0;z-index:55}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 18px;border-bottom:1px solid var(--line);background:rgba(4,10,8,.9)}
+.logo{display:flex;align-items:center;gap:10px;color:var(--g);font-weight:700;letter-spacing:8px;font-size:22px;text-shadow:0 0 10px var(--gd)}
+.logo small{display:block;font-size:8px;letter-spacing:2px;color:var(--m);font-weight:400}
+.logo svg{width:38px;height:38px;fill:none;stroke:var(--g);stroke-width:2}
+.clock{color:var(--m);font-size:12px;direction:ltr}
+.chip{border:1px solid var(--a);color:var(--a);padding:0 12px;font-size:12px;margin-inline-end:8px}
+.ban{background:#2b1d00;border-bottom:1px solid var(--a);color:var(--a);text-align:center;padding:6px;font-weight:700}
+.app{display:grid;grid-template-columns:210px 1fr;max-width:1100px;margin:0 auto}
+nav{display:flex;flex-direction:column;gap:2px;padding:14px;border-inline-end:1px solid var(--line)}
+nav button{background:none;border:0;border-inline-start:2px solid transparent;color:var(--m);text-align:start;padding:9px 10px;cursor:pointer;font:inherit}
+nav button:hover{color:var(--g)}nav button.on{color:var(--g);border-color:var(--g);background:rgba(57,255,136,.07)}
+nav button.gold{color:var(--a)}nav button.gold.on{border-color:var(--a);background:rgba(255,176,0,.08)}
+main{padding:18px;min-width:0}
+h2{margin:0 0 14px;color:var(--g);font-size:15px;letter-spacing:3px;text-shadow:0 0 8px var(--gd)}
+h2::before{content:"// ";color:var(--m)}
+.card{position:relative;background:rgba(9,16,15,.85);border:1px solid var(--line);padding:16px;margin-bottom:14px}
+.card::before,.card::after{content:"";position:absolute;width:12px;height:12px;border:2px solid var(--g)}
+.card::before{top:-1px;right:-1px;border-width:2px 2px 0 0}.card::after{bottom:-1px;left:-1px;border-width:0 0 2px 2px}
+.card h3{margin:0 0 10px;font-size:13px;color:var(--a);letter-spacing:2px}
+.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin-bottom:14px}
+.stat{border:1px solid var(--line);padding:12px;text-align:center;color:var(--m);font-size:11px;letter-spacing:1px;background:rgba(9,16,15,.85)}
+.stat b{display:block;font-size:32px;color:var(--g);text-shadow:0 0 12px var(--gd)}
+.grid2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.bar{display:grid;grid-template-columns:1fr 90px 22px;gap:8px;align-items:center;font-size:12px;margin-bottom:6px}
+.trk{height:6px;background:#0d1f17}.trk i{display:block;height:100%;background:var(--g);box-shadow:0 0 8px var(--g)}
+.tag{display:inline-block;border:1px solid var(--g);color:var(--g);padding:0 8px;font-size:12px;margin-inline-end:8px}
+input,select,textarea{width:100%;background:#020605;color:var(--g);border:1px solid var(--line);padding:10px;font:inherit;margin-bottom:8px;caret-color:var(--g);outline:0}
+input:focus,textarea:focus,select:focus{border-color:var(--g);box-shadow:0 0 8px rgba(57,255,136,.3)}
+textarea{min-height:90px}
+.btn{background:none;border:1px solid var(--g);color:var(--g);padding:9px 20px;cursor:pointer;font:inherit;letter-spacing:2px}
+.btn:hover{background:var(--g);color:#000}
+.btn.r{border-color:var(--r);color:var(--r)}.btn.r:hover{background:var(--r);color:#000}
+.sm{background:none;border:1px solid var(--line);color:var(--t);padding:0 9px;cursor:pointer;font:inherit;font-size:12px;margin-inline-start:4px}
+.sm:hover{border-color:var(--g);color:var(--g)}
+.row{display:flex;align-items:center;gap:8px;justify-content:space-between;border-bottom:1px dashed var(--line);padding:9px 0;flex-wrap:wrap}
+.row:last-child{border:0}
+.muted{color:var(--m);font-size:12px}.ok{color:var(--g)}.bad{color:var(--r)}
+.stamp{display:inline-block;border:2px solid var(--r);color:var(--r);padding:0 12px;font-weight:700;transform:rotate(-4deg);letter-spacing:3px}
+.redact{background:#000;color:#000;cursor:pointer;user-select:none;border:1px solid var(--line)}
+.redact.open{background:none;color:var(--t)}
+.empty{text-align:center;color:var(--m);padding:12px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.8);display:grid;place-items:center;z-index:70;padding:16px}
+.mod{background:var(--p);border:1px solid var(--g);padding:20px;width:min(420px,100%);box-shadow:0 0 30px rgba(57,255,136,.2)}
+.code{font-size:28px;letter-spacing:5px;text-align:center;color:var(--a);margin:12px 0;direction:ltr;text-shadow:0 0 10px #7a5400}
+.gate{max-width:380px;margin:9vh auto;padding:0 16px;text-align:center}
+.gate .logo{justify-content:center;font-size:42px}.gate .logo svg{width:70px;height:70px}
+pre.boot{max-width:520px;margin:18vh auto;color:var(--g);direction:ltr;text-align:left;padding:0 16px;text-shadow:0 0 6px var(--gd)}
+.blink::after{content:"█";animation:b 1s steps(2) infinite}@keyframes b{50%{opacity:0}}
+#toast{position:fixed;bottom:34px;left:50%;transform:translateX(-50%);background:#000;border:1px solid var(--g);color:var(--g);padding:8px 20px;display:none;z-index:80}
+@media (max-width:800px){.app{grid-template-columns:1fr}nav{flex-direction:row;overflow-x:auto;border:0;border-bottom:1px solid var(--line)}nav button{white-space:nowrap}}
+</style>
+</head>
+<body>
+<div class="cls">TOP SECRET // RAZ // سري للغاية</div>
+<div id="root"></div>
+<div class="cls b">INFORMATION IS POWER</div>
+<div id="toast"></div>
+<script>
+const RANKS=[{c:"B-0",n:"القائد الأعلى",k:"B"},{c:"B-1",n:"النائب",k:"B"},{c:"F-1",n:"ضابط عمليات أول",k:"F"},{c:"F-2",n:"ضابط عمليات",k:"F"},{c:"F-3",n:"ضابط ميداني",k:"F"},{c:"S-1",n:"فرد أول",k:"S"},{c:"S-2",n:"فرد",k:"S"},{c:"S-3",n:"متدرب",k:"S"}];
+const CAD={B:"كادر القيادة",F:"كادر الضباط التشغيليين",S:"كادر الأفراد والدعم"};
+const $=i=>document.getElementById(i);
+const h=(t,p,...k)=>{const e=document.createElement(t);Object.assign(e,p||{});k.forEach(x=>e.append(x));return e};
+const info=c=>RANKS.find(r=>r.c===c);
+const date=t=>new Date(t).toLocaleDateString("ar",{year:"numeric",month:"short",day:"numeric"});
+const card=(t,...k)=>h("div",{className:"card"},h("h3",{textContent:t}),...k);
+const empty=t=>h("div",{className:"empty",textContent:t});
+const EMB='<svg viewBox="0 0 40 40"><path d="M20 4 6 14l8 3 6 19 6-19 8-3z"/><path d="M2 12l10 4M38 12l-10 4"/></svg>';
+const logo=()=>{const d=h("div",{className:"logo"});d.innerHTML=EMB;d.append(h("div",{},"RAZ",h("small",{textContent:"ZERO INTELLIGENCE AUTHORITY"})));return d};
+const fresh=()=>({cmd:null,members:[],decrees:[],reports:[],secret:[],banner:""});
+let D=fresh();try{D={...D,...JSON.parse(localStorage.getItem("raz_t")||"{}")}}catch(e){}
+const save=()=>{try{localStorage.setItem("raz_t",JSON.stringify(D))}catch(e){}};
+let me=null,cur="dash",tries=0,lock=0;
+const isOwner=()=>me&&me.owner,isLead=()=>me&&(me.owner||me.code==="B-1");
+const label=m=>m.code==="B-0"?"B-0":m.name;
+function toast(m){const t=$("toast");t.textContent="> "+m;t.style.display="block";clearTimeout(t._x);t._x=setTimeout(()=>t.style.display="none",3000)}
+const ALPH="ABCDEFGHJKMNPQRSTUVWXYZ23456789";
+function genCode(){const a=new Uint32Array(8);crypto.getRandomValues(a);let s="";a.forEach(n=>s+=ALPH[n%ALPH.length]);return s.slice(0,4)+"-"+s.slice(4)}
+async function hash(c){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("RAZ|"+c.replace(/[^A-Z0-9]/gi,"").toUpperCase()));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+function modal(title,fields,ok){return new Promise(res=>{const ov=h("div",{className:"ov"}),bx=h("div",{className:"mod"},h("h3",{textContent:title,style:"color:var(--a);margin-top:0"}));
+ const ins=fields.map(f=>{const i=h("input",{placeholder:f,maxLength:200});bx.append(i);return i});const done=v=>{ov.remove();res(v)};
+ bx.append(h("button",{className:"btn",textContent:ok||"CONFIRM",onclick:()=>done(ins.map(i=>i.value.trim()))}),h("button",{className:"sm",textContent:"إلغاء",onclick:()=>done(null)}));ov.append(bx);document.body.append(ov);ins[0].focus()})}
+function reveal(name,code,badge){const ov=h("div",{className:"ov"}),bx=h("div",{className:"mod"},h("h3",{textContent:"ACCESS CODE: "+name,style:"color:var(--a);margin-top:0"}),h("div",{className:"code",textContent:code}),
+ h("p",{className:"muted",textContent:(badge?"البادج: "+badge+". ":"")+"سلّم الرمز للعضو الآن. لا يظهر مرة ثانية."}),
+ h("button",{className:"btn",textContent:"COPY",onclick:()=>{try{navigator.clipboard.writeText(code);toast("تم النسخ")}catch(e){}}}),h("button",{className:"sm",textContent:"تم",onclick:()=>ov.remove()}));ov.append(bx);document.body.append(ov)}
+
+// ===== البوابة =====
+function gate(){const r=$("root");r.textContent="";const first=!D.cmd;
+ const inp=h("input",{placeholder:first?"أنشئ رمز القائد (8 أحرف أو أكثر)":"ACCESS CODE  XXXX-XXXX",dir:"ltr",style:"text-align:center;font-size:18px;letter-spacing:3px;margin-top:24px"});
+ const go=async()=>{const v=inp.value.trim();
+  if(Date.now()<lock)return toast("محاولات كثيرة، انتظر 30 ثانية");
+  if(first){if(v.replace(/[^A-Za-z0-9]/g,"").length<8)return toast("الرمز قصير جداً");D.cmd=await hash(v);save();me={code:"B-0",name:"القائد الأعلى",owner:true};return boot()}
+  const ch=await hash(v);
+  if(ch===D.cmd){me={code:"B-0",name:"القائد الأعلى",owner:true};return boot()}
+  const m=D.members.find(x=>x.ch===ch);
+  if(m){me=m;return boot()}
+  if(++tries>=5){lock=Date.now()+30000;tries=0}toast("ACCESS DENIED")};
+ inp.onkeydown=e=>{if(e.key==="Enter")go()};
+ r.append(h("div",{className:"gate"},logo(),h("p",{className:"muted blink",textContent:first?"SYSTEM NOT INITIALIZED":"AUTHENTICATION REQUIRED"}),inp,h("button",{className:"btn",style:"width:100%",textContent:first?"INITIALIZE":"AUTHENTICATE",onclick:go}),
+  h("p",{className:"muted",textContent:first?"أول دخول: الرمز اللي تكتبه الحين يصير رمز القائد B-0. احفظه.":"الرمز يسلّمه لك القائد أو القيادة."})))}
+async function boot(){const r=$("root");r.textContent="";const t=h("pre",{className:"boot"});r.append(t);
+ for(const l of["> OPENING SESSION ...","> VERIFYING CREDENTIALS .... OK","> CLEARANCE LEVEL: "+me.code,"> LOADING DOSSIERS ....... OK","> ACCESS GRANTED"]){t.textContent+=l+"\n";await new Promise(x=>setTimeout(x,240))}
+ await new Promise(x=>setTimeout(x,300));start()}
+
+// ===== الواجهة =====
+function start(){const r=$("root");r.textContent="";
+ const tabs=[["dash","01","الرئيسية"],["decrees","02","القرارات"]];
+ if(isLead())tabs.push(["members","03","الأعضاء"]);
+ tabs.push(["reports","04",isLead()?"التقارير":"إرسال تقرير"],["verify","05","فحص بادج"]);
+ if(isOwner())tabs.push(["cmd","06","لوحة القائد","gold"]);
+ const nav=h("nav");tabs.forEach(([id,n,t,c])=>{const b=h("button",{textContent:"["+n+"] "+t,className:c||""});b.dataset.t=id;b.onclick=()=>{cur=id;view()};nav.append(b)});
+ const clk=h("span",{className:"clock"});const tick=()=>clk.textContent=new Date().toISOString().replace("T"," ").slice(0,19)+" UTC";tick();setInterval(tick,1000);
+ r.append(h("div",{className:"top"},logo(),h("span",{},clk," ",h("span",{className:"chip",textContent:me.owner?"B-0":me.code+" | "+me.name}),h("button",{className:"sm",textContent:"LOGOUT",onclick:()=>{me=null;gate()}}))),
+  h("div",{id:"ban"}),h("div",{className:"app"},nav,h("main",{id:"main"})));view()}
+function view(){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===cur));
+ const b=$("ban");b.textContent="";if(D.banner)b.append(h("div",{className:"ban",textContent:"⚠ "+D.banner}));
+ const m=$("main");m.textContent="";m.append(V[cur]())}
+const V={};
+
+V.dash=()=>{const f=h("div");
+ f.append(h("h2",{textContent:"DASHBOARD | لوحة المعلومات"}));
+ const st=[["OPERATIVES",D.members.length+1],["DECREES",D.decrees.length]];if(isLead())st.push(["REPORTS",D.reports.length]);
+ f.append(h("div",{className:"stats"},...st.map(([t,n])=>h("div",{className:"stat"},h("b",{textContent:n}),t))));
+ const cnt={B:1,F:0,S:0};D.members.forEach(m=>{const r=info(m.code);if(r)cnt[r.k]++});const tot=D.members.length+1;
+ f.append(h("div",{className:"grid2"},card("CADRE DISTRIBUTION",...Object.keys(CAD).map(k=>h("div",{className:"bar"},h("span",{textContent:k+" | "+CAD[k]}),h("div",{className:"trk"},h("i",{style:"width:"+(cnt[k]/tot*100)+"%"})),h("b",{textContent:cnt[k]})))),
+  card("SYSTEM STATUS",...[["الاتصال","SECURE"],["مستوى التصريح",me.code],["الحالة","ACTIVE"]].map(([a,b])=>h("div",{className:"row"},h("span",{textContent:a}),h("b",{className:"ok",textContent:b}))))));
+ const d=D.decrees[0];
+ f.append(card("LATEST DECREE",d?h("div",{},h("b",{textContent:d.title}),h("div",{className:"muted",textContent:"B-0 | "+date(d.ts)}),h("p",{textContent:d.body})):empty("NO DATA"),
+  h("span",{className:"stamp",textContent:"TOP SECRET"}),h("p",{className:"muted",textContent:"البادج وثيقة حصانة رسمية (المادة 4). القائد الأعلى يُكتفى برمزه B-0 فقط (المادة 1)."})));
+ return f};
+
+V.decrees=()=>{const f=h("div",{},h("h2",{textContent:"DECREES | القرارات"}));
+ if(isOwner())f.append(card("ISSUE DECREE",h("input",{id:"dT",placeholder:"عنوان القرار",maxLength:80}),h("textarea",{id:"dB",placeholder:"نص القرار",maxLength:1500}),
+  h("button",{className:"btn",textContent:"ISSUE",onclick:()=>{const t=$("dT").value.trim(),b=$("dB").value.trim();if(t.length<3||b.length<5)return toast("أكمل الحقول");D.decrees.unshift({id:Date.now(),title:t,body:b,ts:Date.now()});save();toast("تم الإصدار");view()}})));
+ const l=card("OFFICIAL DECREES");if(!D.decrees.length)l.append(empty("NO DATA"));
+ D.decrees.forEach(d=>{const r=h("div",{className:"row"},h("div",{},h("b",{textContent:d.title}),h("div",{className:"muted",textContent:"B-0 | "+date(d.ts)}),h("div",{textContent:d.body})));
+  if(isOwner())r.append(h("button",{className:"sm",textContent:"إلغاء",onclick:()=>{D.decrees=D.decrees.filter(x=>x!==d);save();view()}}));l.append(r)});
+ f.append(l);return f};
+
+V.members=()=>{const f=h("div",{},h("h2",{textContent:"PERSONNEL | الأعضاء"}));
+ const opts=RANKS.filter(r=>r.c!=="B-0"&&(isOwner()||r.k!=="B"));
+ const n=h("input",{placeholder:"اسم العضو",maxLength:40}),s=h("select",{},...opts.map(r=>h("option",{value:r.c,textContent:r.c+" | "+r.n})));
+ f.append(card("REGISTER OPERATIVE",n,s,h("button",{className:"btn",textContent:"REGISTER + ACCESS CODE",onclick:async()=>{
+  const name=n.value.trim(),code=s.value;if(name.length<2)return toast("اكتب الاسم");
+  if(code==="B-1"&&D.members.some(m=>m.code==="B-1"))return toast("النائب معيّن مسبقاً");
+  let badge;do{badge="RAZ-"+Math.floor(1000+Math.random()*9000)}while(D.members.some(m=>m.badge===badge));
+  const c=genCode();D.members.push({id:Date.now(),name,code,badge,ch:await hash(c),ts:Date.now()});save();reveal(name,c,badge);view()}})));
+ const l=card("PERSONNEL FILE");l.append(h("div",{className:"row"},h("span",{},h("span",{className:"tag",textContent:"B-0"}),"B-0"),h("span",{className:"muted",textContent:"القائد الأعلى"})));
+ if(!D.members.length)l.append(empty("NO OPERATIVES"));
+ [...D.members].sort((a,b)=>RANKS.findIndex(r=>r.c===a.code)-RANKS.findIndex(r=>r.c===b.code)).forEach(m=>{
+  const i=RANKS.findIndex(r=>r.c===m.code),manage=isOwner()||info(m.code).k!=="B";
+  const mv=d=>{const x=RANKS[i+d];if(!x||x.c==="B-0"||(!isOwner()&&x.k==="B")||(x.c==="B-1"&&D.members.some(y=>y.code==="B-1")))return toast("غير مسموح");m.code=x.c;save();view()};
+  const r=h("div",{className:"row"},h("span",{},h("span",{className:"tag",textContent:m.code}),h("b",{textContent:label(m)}),h("div",{className:"muted",textContent:m.badge+" | "+CAD[info(m.code).k]})));
+  if(manage)r.append(h("span",{},h("button",{className:"sm",textContent:"▲",onclick:()=>mv(-1)}),h("button",{className:"sm",textContent:"▼",onclick:()=>mv(1)}),
+   h("button",{className:"sm",textContent:"🔑",onclick:async()=>{const c=genCode();m.ch=await hash(c);save();reveal(m.name,c,m.badge)}}),
+   h("button",{className:"sm",textContent:"فصل",onclick:()=>{if(confirm("فصل "+m.name+"؟")){D.members=D.members.filter(x=>x!==m);save();view()}}})));
+  l.append(r)});
+ f.append(l);return f};
+
+V.reports=()=>{const f=h("div",{},h("h2",{textContent:"REPORTS | التقارير"}));
+ const t=h("input",{placeholder:"العنوان",maxLength:80}),b=h("textarea",{placeholder:"التفاصيل",maxLength:1000});
+ f.append(card("FILE NEW REPORT",t,b,h("button",{className:"btn",textContent:"SUBMIT",onclick:()=>{if(t.value.trim().length<3||b.value.trim().length<10)return toast("التقرير قصير");
+  D.reports.unshift({id:Date.now(),title:t.value.trim(),body:b.value.trim(),by:me.code,ts:Date.now()});save();toast("تم الإرسال للقيادة");t.value=b.value="";if(isLead())view()}})));
+ if(isLead()){const l=card("INBOX");if(!D.reports.length)l.append(empty("NO REPORTS"));
+  D.reports.forEach(r=>l.append(h("div",{className:"row"},h("div",{},h("b",{textContent:r.title}),h("div",{className:"muted",textContent:r.by+" | "+date(r.ts)}),h("div",{textContent:r.body})),
+   h("button",{className:"sm",textContent:"أرشفة",onclick:()=>{D.reports=D.reports.filter(x=>x!==r);save();view()}}))));f.append(l)}
+ return f};
+
+V.verify=()=>{const f=h("div",{},h("h2",{textContent:"BADGE CHECK | فحص البادج"}));const i=h("input",{placeholder:"RAZ-1234",dir:"ltr"}),o=h("p");
+ f.append(card("VERIFY",i,h("button",{className:"btn",textContent:"VERIFY",onclick:()=>{const m=D.members.find(x=>x.badge===i.value.trim().toUpperCase());
+  if(!m){o.className="bad";o.textContent="✖ INVALID BADGE";return}o.className="ok";o.textContent="✔ VALID | "+m.code+" | "+CAD[info(m.code).k]+" | حصانة الوكالة سارية (المادة 4)"}}),o));return f};
+
+V.cmd=()=>{const f=h("div",{},h("h2",{textContent:"COMMAND PANEL | لوحة القائد"}));
+ const bi=h("input",{placeholder:"نص الإعلان العاجل",maxLength:140,value:D.banner||""});
+ f.append(card("URGENT BROADCAST",bi,h("button",{className:"btn",textContent:"BROADCAST",onclick:()=>{D.banner=bi.value.trim();save();toast("تم");view()}}),h("button",{className:"sm",textContent:"إزالة",onclick:()=>{D.banner="";save();view()}})));
+ const st=h("input",{placeholder:"عنوان الملف",maxLength:80}),sb=h("textarea",{placeholder:"المحتوى",maxLength:2000});
+ f.append(card("CLASSIFIED FILES",h("span",{className:"stamp",textContent:"B-0 ONLY"}),h("div",{style:"height:8px"}),st,sb,h("button",{className:"btn",textContent:"SAVE",onclick:()=>{if(!st.value.trim()||!sb.value.trim())return toast("أكمل الحقول");D.secret.unshift({id:Date.now(),title:st.value.trim(),body:sb.value.trim(),ts:Date.now()});save();view()}})));
+ const l=card("ARCHIVE");if(!D.secret.length)l.append(empty("NO FILES"));
+ D.secret.forEach(s=>{const c=h("div",{className:"redact",textContent:s.body,onclick:e=>e.currentTarget.classList.toggle("open")});
+  l.append(h("div",{className:"row"},h("div",{style:"flex:1"},h("b",{textContent:s.title}),h("div",{className:"muted",textContent:date(s.ts)+" | اضغط على الكتلة السوداء لكشفها"}),c),h("button",{className:"sm",textContent:"حذف",onclick:()=>{D.secret=D.secret.filter(x=>x!==s);save();view()}})))});
+ f.append(l,card("DANGER ZONE",h("button",{className:"btn r",textContent:"WIPE ALL DATA",onclick:()=>{if(confirm("مسح كل البيانات ورمز القائد؟")){D=fresh();save();me=null;gate()}}})));return f};
+
+gate();
+</script>
+</body>
+</html>
